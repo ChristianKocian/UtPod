@@ -127,7 +127,7 @@ using namespace std;
 
    ostream& operator << (ostream& out, const Song &s) { // overloads print statement to print entire class all at once.
 
-      out << s.getArtist() << " - " << s.getTitle() << " - " << s.getSize();
+      out << s.getArtist() << " - " << s.getTitle() << " - " << s.getSize() << "MB";
       return out;  
 
    }

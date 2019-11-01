@@ -109,7 +109,7 @@ int main(int argc, char *argv[]) {
     cout << "^ current song list for UtPod t" << endl;
     cout << endl;
     
-    cout << "memory remaining for UtPod t = " << t.getRemainingMemory() << endl;
+    cout << "memory remaining for UtPod t = " << t.getRemainingMemory() << "MB" << endl;
     cout << endl;
 
     result = t.removeSong(s1);
@@ -135,9 +135,23 @@ int main(int argc, char *argv[]) {
     cout << "add result = " << result << endl;
     cout << endl;
    
+    Song s9("Slipknot", "Snuff", 86);
+    result = t.addSong(s9);
+    cout << "adding song Slipknot, Snuff, 86 to UtPod t" << endl;
+    cout << "add result = " << result << endl;
+    cout << endl;
+    
     result = t.addSong(s8);
     cout << "adding song Slipknot, Snuff, 66 to UtPod t" << endl;
     cout << "add result = " << result << endl;
+    cout << endl;
+
+    t.showSongList();
+    cout << "^ current song list for UtPod t" << endl;
+    cout << endl;
+
+    t.shuffle();
+    cout << "song list for UtPod t was shuffled" << endl;
     cout << endl;
 
     t.showSongList();
@@ -199,7 +213,7 @@ int main(int argc, char *argv[]) {
     cout << "^ current song list for UtPod t" << endl;
     cout << endl;
     
-    cout << "memory remaining for UtPod t = " << t.getRemainingMemory() << endl;
+    cout << "memory remaining for UtPod t = " << t.getRemainingMemory() << "MB" << endl;
     cout << endl;
 
     t.sortSongList();
@@ -211,19 +225,19 @@ int main(int argc, char *argv[]) {
     cout << endl;
     
     UtPod k (333);
-    cout << "inital memory for UtPod k is = " << k.getTotalMemory() << endl;
+    cout << "inital memory for UtPod k when 333MB was specified is = " << k.getTotalMemory() << "MB" << endl;
     cout << endl;
 
     UtPod f (666);
-    cout << "inital memory for UtPod f is = " << f.getTotalMemory() << endl;
+    cout << "inital memory for UtPod f when 666MB was specified is = " << f.getTotalMemory() << "MB" << endl;
     cout << endl;
 
     UtPod j (-1); 
-    cout << "inital memory for UtPod j is = " << j.getTotalMemory() << endl;
+    cout << "inital memory for UtPod j when -1MB was specified is = " << j.getTotalMemory() << "MB" << endl;
     cout << endl;
  
     UtPod l (0);
-    cout << "inital memory for UtPod l is = " << l.getTotalMemory() << endl;
+    cout << "inital memory for UtPod l when 0MB was specified is = " << l.getTotalMemory() << "MB" << endl;
     cout << endl;
 
     k.showSongList();
@@ -347,7 +361,7 @@ int main(int argc, char *argv[]) {
     cout << "^ current song list for UtPod k" << endl;
     cout << endl;
     
-    cout << "memory remaining for UtPod k = " << k.getRemainingMemory() << endl;
+    cout << "memory remaining for UtPod k = " << k.getRemainingMemory() << "MB" << endl;
     cout << endl;
     
     result = k.removeSong(s2);
@@ -355,7 +369,7 @@ int main(int argc, char *argv[]) {
     cout << "delete result = " << result <<endl;
     cout << endl;
 
-    cout << "memory remaining for UtPod k = " << k.getRemainingMemory() << endl;
+    cout << "memory remaining for UtPod k = " << k.getRemainingMemory() << "MB" << endl;
     cout << endl;
     
     result = k.removeSong(s2);
@@ -363,9 +377,16 @@ int main(int argc, char *argv[]) {
     cout << "delete result = " << result <<endl;
     cout << endl;
 
-    cout << "memory remaining for UtPod k = " << k.getRemainingMemory() << endl;
+    cout << "memory remaining for UtPod k = " << k.getRemainingMemory() << "MB" << endl;
     cout << endl;
     
+    result = k.addSong(s2);
+    cout << "adding song Linkin Park, New Divide, 10MB to UtPod t" << endl;
+    cout << "add result = " << result <<endl;
+    cout << endl;
+
+    cout << "memory remaining for UtPod k = " << k.getRemainingMemory() << "MB" << endl;
+    cout << endl;
     
 
 }
