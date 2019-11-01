@@ -5,73 +5,73 @@
 
 using namespace std;
 
-   Song::Song() {
+   Song::Song() { // default constructor required for creating the UtPod class.
    
-      title = "";
       artist = "";
+      title = "";
       size = 0;
    
    }
 
-   Song::Song(string _title, string _artist, int _size) {
+   Song::Song(string _artist, string _title, int _size) { // custom constructor for actual songs.
    
-      title = _title;
       artist = _artist;
+      title = _title;
       size = _size;
    
    }
    
-   string Song::getTitle() const { 
+   string Song::getTitle() const { // access variable.
    
    return title; 
 
    }
    
-   void Song::setTitle(string name) {
+   void Song::setTitle(string name) { // change variable.
    
       title = name;
    
    }
    
-   string Song::getArtist() const {
+   string Song::getArtist() const { // access variable.
 
       return artist;
 
    }
 
-   void Song::setArtist(string musician) {
+   void Song::setArtist(string musician) { // change variable.
    
       artist = musician;
    
    }
 
-   int Song::getSize() const {
+   int Song::getSize() const { // access variable.
 
       return size;
 
    }
 
-   void Song::setSize(int megaBytes) {
+   void Song::setSize(int megaBytes) { // change variable.
 
       size = megaBytes;
 
    }
 
-   bool Song::operator <(Song const &rhs) {
+   bool Song::operator <(Song const &rhs) { // overloads to compare songs.
       
-      if (title.compare(rhs.title) < 0) {
+      if (artist.compare(rhs.artist) < 0) {
 
          return true;
 
       }
       
-      if (title.compare(rhs.title) == 0 && artist.compare(rhs.artist) < 0) {
+      if (artist.compare(rhs.artist) == 0 && title.compare(rhs.title) < 0) {
       
          return true;
 
       }
       
-      if (title.compare(rhs.title) == 0 && artist.compare(rhs.artist) == 0 && size < rhs.size) {    
+      if (artist.compare(rhs.artist) == 0 && title.compare(rhs.title) == 0 && size < rhs.size) { // checks all three parameters of a songs using compare function.
        
          return true;
 
@@ -81,7 +81,7 @@ using namespace std;
 
    }
 
-   bool Song::operator ==(Song const &rhs) {
+   bool Song::operator ==(Song const &rhs) { // checks if equal, for remove song primarily.
 
       return (title.compare(rhs.title) == 0 &&
               artist.compare(rhs.artist) == 0 &&
@@ -89,21 +89,21 @@ using namespace std;
 
    }
 
-   bool Song::operator >(Song const &rhs) {
+   bool Song::operator >(Song const &rhs) { // same as above overload.
 
-      if (title.compare(rhs.title) > 0) {
+      if (artist.compare(rhs.artist) > 0) {
 
          return true;
 
       }
       
-      if (title.compare(rhs.title) == 0 && artist.compare(rhs.artist) > 0) {
+      if (artist.compare(rhs.artist) == 0 && title.compare(rhs.title) > 0) {
       
          return true;
 
       }
       
-      if (title.compare(rhs.title) == 0 && artist.compare(rhs.artist) == 0 && size > rhs.size) {    
+      if (artist.compare(rhs.artist) == 0 && title.compare(rhs.title) == 0 && size > rhs.size) {    
        
          return true;
 
@@ -125,9 +125,9 @@ using namespace std;
 
 //   }
 
-   ostream& operator << (ostream& out, const Song &s) {
+   ostream& operator << (ostream& out, const Song &s) { // overloads print statement to print entire class all at once.
 
-      out << s.getTitle() << " - " << s.getArtist() << " - " << s.getSize();
+      out << s.getArtist() << " - " << s.getTitle() << " - " << s.getSize();
       return out;  
 
    }

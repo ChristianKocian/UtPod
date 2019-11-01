@@ -26,7 +26,7 @@ using namespace std;
       srand(currentTime);  //seed the random number generator
       
 
-      if (size >= MAX_MEMORY || size <= 0) {
+      if (size >= MAX_MEMORY || size <= 0) { // size < or = to 0 and > or = 512, set to 512.
 
          memSize = MAX_MEMORY;
  
@@ -40,12 +40,12 @@ using namespace std;
 
    }
 
-   int UtPod::addSong(Song const &s) {
+   int UtPod::addSong(Song const &s) { // attempts to add a song to the linked list.
 
 
       int left = getRemainingMemory();
 
-      if (s.getSize() > left) {
+      if (s.getSize() > left) { // if the song is too large to store in the remaining memory of the UtPod then it throws an error.
 
          return NO_MEMORY;
 
@@ -55,7 +55,7 @@ using namespace std;
       temp -> s = s;
       temp -> next = NULL;
 
-      if (songs == NULL) {
+      if (songs == NULL) { // if empty.
          
          songs = temp;
 
@@ -135,13 +135,13 @@ using namespace std;
          p = p->next;
          
       }
-cout << "number of songs = " << numNodes << endl;
+//cout << "number of songs = " << numNodes << endl;
       for (int i = 0; i < (2 * numNodes); i++) { // repeat grabbing random numbers until process done twice as many times as there are songs.
       
          long node1 = (rand() % numNodes + 1); // gets two random numbers between 0 and total number of nodes. swap the contents of the nodes corresponding to these random numbers.
          long node2 = (rand() % numNodes + 1);
-cout << "rand num 1 = " << node1 << endl;
-cout << "rand num 2 = " << node2 << endl;
+//cout << "rand num 1 = " << node1 << endl;
+//cout << "rand num 2 = " << node2 << endl;
          Song temp;
          SongNode *firstNode = songs; // creates the pointers that will traverse the list to find corresponding 2 nodes to rand gen.
          SongNode *secondNode = songs;
@@ -191,7 +191,7 @@ cout << "rand num 2 = " << node2 << endl;
 
       Song temp;
       
-      if (songs == NULL || songs -> next == NULL) { // does nothing if only one song in the list.
+      if (songs == NULL || songs -> next == NULL) { // does nothing if only one or 0 song in the list.
    
          return;
 
@@ -219,7 +219,7 @@ cout << "rand num 2 = " << node2 << endl;
 
    void UtPod::clearMemory() {
 
-      if (songs == NULL) {
+      if (songs == NULL) { // already clear.
 
          return;
 
@@ -253,7 +253,7 @@ cout << "rand num 2 = " << node2 << endl;
 
    }
 
-   UtPod::~UtPod() {
+   UtPod::~UtPod() { // frees up with delete function.
 
       clearMemory();
 

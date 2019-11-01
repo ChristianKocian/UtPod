@@ -17,7 +17,7 @@ class Song {
  
   public:
    Song();
-   Song(string title, string artist, int size); // constructor to set size title and artist.
+   Song(string artist, string title, int size); // constructor to set size title and artist.
    string getTitle() const; // access to private title.
    void setTitle(string name); // new value for private title.
    string getArtist() const; // access to private artist.
