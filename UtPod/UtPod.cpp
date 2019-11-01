@@ -5,26 +5,38 @@
 #include <iostream>
 #include "UtPod.h"
 #include "Song.h"
+#include <ctime>
+#include <cstdlib> 
 
 using namespace std;
 
    UtPod::UtPod() {
 
+      unsigned int currentTime =  (unsigned)time(0);
+      srand(currentTime);  //seed the random number generator
+      
       memSize = MAX_MEMORY;
       songs = NULL;
 
    }
 
    UtPod::UtPod(int size) {
-// also include seed for random generator
+   
+      unsigned int currentTime =  (unsigned)time(0);
+      srand(currentTime);  //seed the random number generator
+      
+
       if (size >= MAX_MEMORY || size <= 0) {
 
          memSize = MAX_MEMORY;
  
+      } else {
+
+         memSize = size;
+      
       }
 
-      memSize = size;
-      songs = NULL;
+      songs = NULL; 
 
    }
 
@@ -108,12 +120,55 @@ using namespace std;
 
    void UtPod::shuffle() {
 
-      if (songs -> next == NULL) { // does nothing if only one song in list.
+      if (songs == NULL || songs -> next == NULL) { // does nothing if only one song in list or no songs.
    
          return;
 
       }
 
+      int numNodes = 0;
+      SongNode *p = songs;
+
+      while (p != NULL) {  //traverse list to find total nodes.
+     
+         numNodes ++;
+         p = p->next;
+         
+      }
+cout << "number of songs = " << numNodes << endl;
+      for (int i = 0; i < (2 * numNodes); i++) { // repeat grabbing random numbers until process done twice as many times as there are songs.
+      
+         long node1 = (rand() % numNodes + 1); // gets two random numbers between 0 and total number of nodes. swap the contents of the nodes corresponding to these random numbers.
+         long node2 = (rand() % numNodes + 1);
+cout << "rand num 1 = " << node1 << endl;
+cout << "rand num 2 = " << node2 << endl;
+         Song temp;
+         SongNode *firstNode = songs; // creates the pointers that will traverse the list to find corresponding 2 nodes to rand gen.
+         SongNode *secondNode = songs;
+
+         int j = 1;
+
+         while (j != node1) { // if j = 1 list is first node. j = 2 list is second node. etc.
+            
+            j ++;
+            firstNode = firstNode -> next; // if j = 1, first element already being pointed at so does not enter loop. 
+
+         }
+
+         int k = 1;
+
+         while (k != node2) { // if j = 1 list is first node. j = 2 list is second node. etc.
+            
+            k ++;
+            secondNode = secondNode -> next; // if j = 1, first element already being pointed at so does not enter loop. 
+
+         }
+
+            temp = secondNode -> s; // swaps the contents of the song if prev song correlating to where the random number generator indicated.
+            secondNode -> s = firstNode -> s;
+            firstNode -> s = temp;
+      
+      }
 
    }
 
@@ -136,7 +191,7 @@ using namespace std;
 
       Song temp;
       
-      if (songs -> next == NULL) { // does nothing if only one song in the list.
+      if (songs == NULL || songs -> next == NULL) { // does nothing if only one song in the list.
    
          return;
 
@@ -148,9 +203,9 @@ using namespace std;
        
             if (prev -> s > p -> s && p != NULL) { // the double NULL in the if and for is just to make sure the last linked list doesnt seg fault.
    
-                temp = prev -> s; // swaps the contents of the song if prev song is smaller than current song.
-                prev -> s = p -> s;
-                p -> s = temp;
+               temp = prev -> s; // swaps the contents of the song if prev song is smaller than current song.
+               prev -> s = p -> s;
+               p -> s = temp;
 
             }   
     
